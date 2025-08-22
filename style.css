@@ -17,25 +17,34 @@ p {
     font-size: 18px;
 }
 
-/* Container styling */
+/* Grid layout for container */
 .container {
-    display: flex;
-    flex-direction: column; /* stack items vertically */
-    justify-content: center; /* center vertically */
-    align-items: center; /* center horizontally */
-    height: 100vh; /* full viewport height */
+    display: grid;
+    grid-template-rows: auto 1fr 1fr auto; /* header, about, projects, footer */
+    grid-gap: 20px;
+    height: 100vh;
     padding: 20px;
     box-sizing: border-box;
 }
 
-/* Mobile-friendly adjustments */
-@media (max-width: 600px) {
-    h1 {
-        font-size: 24px;
-    }
+/* Individual sections */
+header, section, footer {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
 
-    p {
-        font-size: 16px;
+/* Section headers */
+section h2 {
+    margin-top: 0;
+}
+
+/* Mobile-friendly adjustments */
+@media (max-width: 768px) {
+    .container {
+        grid-template-rows: auto auto auto auto; /* stack sections vertically */
     }
 }
+
 
