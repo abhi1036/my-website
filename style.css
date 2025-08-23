@@ -39,6 +39,52 @@ header, section, footer {
 section h2 {
     margin-top: 0;
 }
+/* Projects toggle button */
+#toggle-projects {
+    background-color: #0078ff;
+    color: white;
+    padding: 10px 18px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    margin-bottom: 10px;
+}
+
+/* Hover effect for button */
+#toggle-projects:hover {
+    background-color: #005fcc;
+    transform: scale(1.05);
+}
+/* Project list styles */
+#project-list {
+    list-style: none;
+    padding: 0;
+    margin-top: 10px;
+}
+
+#project-list li {
+    background-color: #f8f9fa;
+    padding: 12px 15px;
+    margin-bottom: 8px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease-in-out;
+    font-size: 16px;
+}
+
+/* Hover effect on list items */
+#project-list li:hover {
+    background-color: #e3f2fd;
+    transform: translateX(5px);
+}
+#project-list {
+    transition: opacity 0.3s ease-in-out;
+}
+
+
 
 /* Mobile-friendly adjustments */
 @media (max-width: 768px) {
