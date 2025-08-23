@@ -1,130 +1,106 @@
-/* style.css */
+/* General Page Styling */
 body {
     font-family: Arial, sans-serif;
-    background-color: #f0f2f5;
-    text-align: center;
     margin: 0;
     padding: 0;
+    background-color: #f4f4f4;
+    color: #222;
+    text-align: center;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+header {
+    background: #0078ff;
+    padding: 20px;
+    color: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
 }
 
 h1 {
-    color: #333;
-    margin-top: 50px;
+    margin: 0;
 }
 
-p {
-    color: #555;
-    font-size: 18px;
+/* Digital Clock */
+#clock {
+    font-size: 20px;
+    margin-top: 8px;
+    font-weight: bold;
+    color: #fff;
 }
 
-/* Grid layout for container */
-.container {
-    display: grid;
-    grid-template-rows: auto 1fr 1fr auto; /* header, about, projects, footer */
-    grid-gap: 20px;
-    height: 100vh;
-    padding: 20px;
-    box-sizing: border-box;
-}
-
-/* Individual sections */
-header, section, footer {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-}
-
-/* Section headers */
-section h2 {
-    margin-top: 0;
-}
-/* Projects toggle button */
-#toggle-projects {
-    background-color: #0078ff;
-    color: white;
-    padding: 10px 18px;
+/* Theme Toggle Button */
+#theme-toggle {
+    background-color: #444;
+    color: #fff;
+    padding: 8px 15px;
     border: none;
     border-radius: 5px;
-    font-size: 16px;
-    font-weight: 600;
     cursor: pointer;
+    font-size: 14px;
+    margin-top: 12px;
     transition: all 0.3s ease-in-out;
-    margin-bottom: 10px;
 }
 
-/* Hover effect for button */
-#toggle-projects:hover {
-    background-color: #005fcc;
-    transform: scale(1.05);
+#theme-toggle:hover {
+    background-color: #222;
 }
-/* Project list styles */
+
+/* Projects Section */
+#projects {
+    padding: 20px;
+}
+
+#toggle-projects {
+    background-color: #0078ff;
+    color: #fff;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-bottom: 10px;
+    transition: all 0.3s ease-in-out;
+}
+
+#toggle-projects:hover {
+    background-color: #005ec4;
+}
+
 #project-list {
-    list-style: none;
+    list-style-type: none;
     padding: 0;
-    margin-top: 10px;
+    max-width: 300px;
+    margin: 10px auto;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    display: none;
+    transition: all 0.3s ease-in-out;
 }
 
 #project-list li {
-    background-color: #f8f9fa;
-    padding: 12px 15px;
-    margin-bottom: 8px;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease-in-out;
-    font-size: 16px;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    color: #333;
 }
 
-/* Hover effect on list items */
-#project-list li:hover {
-    background-color: #e3f2fd;
-    transform: translateX(5px);
-}
-#project-list {
-    transition: opacity 0.3s ease-in-out;
+#project-list li:last-child {
+    border-bottom: none;
 }
 
-
-
-/* Mobile responsiveness */
-@media (max-width: 768px) {
-    body {
-        padding: 10px;
-    }
-
-    header h1 {
-        font-size: 24px;
-    }
-
-    section h2 {
-        font-size: 20px;
-    }
-
-    p {
-        font-size: 16px;
-    }
-
-    #toggle-projects {
-        width: 100%;
-        padding: 12px;
-    }
-
-    #project-list li {
-        font-size: 15px;
-        padding: 10px;
-    }
+/* Dark Mode Styling */
+body.dark-mode {
+    background-color: #222;
+    color: #fff;
 }
 
-/* Extra small screens (phones < 480px) */
-@media (max-width: 480px) {
-    header h1 {
-        font-size: 20px;
-    }
-
-    #toggle-projects {
-        font-size: 14px;
-        padding: 10px;
-    }
+body.dark-mode header {
+    background-color: #111;
 }
 
-
+body.dark-mode #project-list {
+    background-color: #333;
+    color: #fff;
+    border-color: #555;
+}
