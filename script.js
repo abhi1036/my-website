@@ -45,12 +45,17 @@ const addTaskBtn = document.getElementById("add-task");
 const todoList = document.getElementById("todo-list");
 
 // Array to store tasks
-let tasks = [];
+let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+
+function saveTasks(){
+    localStorage.setItem("tasks",JSON.stringify(tasks));
+}
 
 addTaskBtn.addEventListener("click", () => {
     const taskText = todoInput.value.trim();
     if(taskText !== ""){
         tasks.push(taskText);
+        saveTasks();
         renderTasks();
         todoInput.value = "";
     }
@@ -60,18 +65,54 @@ function renderTasks(){
     todoList.innerHTML = ""; // Clear list
     tasks.forEach((task, index) => {
         const li = document.createElement("li");
-        li.innerText = task;
 
-        // Add delete button
-        const delBtn = document.createElement("button");
-        delBtn.innerText = "❌";
-        delBtn.style.marginLeft = "10px";
-        delBtn.addEventListener("click", () => {
-            tasks.splice(index, 1);
+        // Task text
+        const span = document.createElement("span");
+        span.innerText = task.text;
+        if(task.completed) {
+            span.style.textDecoration = "line-through";
+            span.style.color = "#888";
+        }
+        li.appendChild(span);
+
+        // Complete button
+        const completeBtn = document.createElement("button");
+        completeBtn.innerText = task.completed ? "✔️" : "✅";
+        completeBtn.style.marginLeft = "10px";
+        completeBtn.addEventListener("click", () => {
+            tasks[index].completed = !tasks[index].completed;
+            saveTasks();
             renderTasks();
         });
+        li.appendChild(completeBtn);
 
+        // Edit button
+        const editBtn = document.createElement("button");
+        editBtn.innerText = "✏️";
+        editBtn.style.marginLeft = "5px";
+        editBtn.addEventListener("click", () => {
+            const newText = prompt("Edit task:", tasks[index].text);
+            if(newText !== null && newText.trim() !== ""){
+                tasks[index].text = newText.trim();
+                saveTasks();
+                renderTasks();
+            }
+        });
+        li.appendChild(editBtn);
+
+        // Delete button
+        const delBtn = document.createElement("button");
+        delBtn.innerText = "❌";
+        delBtn.style.marginLeft = "5px";
+        delBtn.addEventListener("click", () => {
+            tasks.splice(index, 1);
+            saveTasks();
+            renderTasks();
+        });
         li.appendChild(delBtn);
+
         todoList.appendChild(li);
     });
 }
+
+renderTasks();
