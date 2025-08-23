@@ -38,3 +38,40 @@ toggleButton.addEventListener("click", () => {
         toggleButton.textContent = "Show Projects";
     }
 });
+
+
+const todoInput = document.getElementById("todo-input");
+const addTaskBtn = document.getElementById("add-task");
+const todoList = document.getElementById("todo-list");
+
+// Array to store tasks
+let tasks = [];
+
+addTaskBtn.addEventListener("click", () => {
+    const taskText = todoInput.value.trim();
+    if(taskText !== ""){
+        tasks.push(taskText);
+        renderTasks();
+        todoInput.value = "";
+    }
+});
+
+function renderTasks(){
+    todoList.innerHTML = ""; // Clear list
+    tasks.forEach((task, index) => {
+        const li = document.createElement("li");
+        li.innerText = task;
+
+        // Add delete button
+        const delBtn = document.createElement("button");
+        delBtn.innerText = "❌";
+        delBtn.style.marginLeft = "10px";
+        delBtn.addEventListener("click", () => {
+            tasks.splice(index, 1);
+            renderTasks();
+        });
+
+        li.appendChild(delBtn);
+        todoList.appendChild(li);
+    });
+}
