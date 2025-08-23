@@ -30,11 +30,11 @@ const toggleButton = document.getElementById("toggle-projects");
 const projectList = document.getElementById("project-list");
 
 toggleButton.addEventListener("click", () => {
-    if (projectList.style.display === "none" || projectList.style.display === "") {
-        projectList.style.display = "block";
+    const isVisible = projectList.classList.toggle("show");
+
+    if (isVisible) {
         toggleButton.textContent = "Hide Projects";
     } else {
-        projectList.style.display = "none";
         toggleButton.textContent = "Show Projects";
     }
 });
