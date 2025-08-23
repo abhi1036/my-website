@@ -86,10 +86,44 @@ section h2 {
 
 
 
-/* Mobile-friendly adjustments */
+/* Mobile responsiveness */
 @media (max-width: 768px) {
-    .container {
-        grid-template-rows: auto auto auto auto; /* stack sections vertically */
+    body {
+        padding: 10px;
+    }
+
+    header h1 {
+        font-size: 24px;
+    }
+
+    section h2 {
+        font-size: 20px;
+    }
+
+    p {
+        font-size: 16px;
+    }
+
+    #toggle-projects {
+        width: 100%;
+        padding: 12px;
+    }
+
+    #project-list li {
+        font-size: 15px;
+        padding: 10px;
+    }
+}
+
+/* Extra small screens (phones < 480px) */
+@media (max-width: 480px) {
+    header h1 {
+        font-size: 20px;
+    }
+
+    #toggle-projects {
+        font-size: 14px;
+        padding: 10px;
     }
 }
 
